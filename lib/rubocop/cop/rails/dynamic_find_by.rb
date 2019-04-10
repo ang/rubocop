@@ -26,6 +26,10 @@ module RuboCop
       #   # good
       #   User.find_by!(email: email)
       class DynamicFindBy < Cop
+        extend TargetRailsVersion
+
+        minimum_target_rails_version 4.0
+
         MSG = 'Use `%<static_name>s` instead of dynamic `%<method>s`.'.freeze
         METHOD_PATTERN = /^find_by_(.+?)(!)?$/.freeze
 

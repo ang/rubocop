@@ -150,4 +150,14 @@ RSpec.describe RuboCop::Cop::Rails::DynamicFindBy, :config do
       )
     end
   end
+
+  context 'rails <= 4.0' do
+    let(:rails_version) { 3.2 }
+
+    it 'allows dynamic_find_by' do
+      expect_no_offenses(<<-RUBY.strip_indent)
+        User.find_by_name(name)
+      RUBY
+    end
+  end
 end
